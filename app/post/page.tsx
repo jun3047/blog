@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import Nav from "@/components/Nav";
 import { getPosts } from "@/lib/api";
 
 const page = async () => {
@@ -7,10 +8,11 @@ const page = async () => {
 
   return (
     <div className="flex flex-col m-10">
+      <Nav />
       {posts.map(post => (
         <Link
           className="p-4 border-gray"
-          href={`blog/${post.slug}`}
+          href={`post/${post.slug}`}
           key={post.title}
         >
           {post.title}

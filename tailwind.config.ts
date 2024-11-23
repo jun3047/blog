@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        suite: ["var(--font-suite)"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
