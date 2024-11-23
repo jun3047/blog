@@ -22,7 +22,7 @@ export default async function Home() {
           {posts.map(post => (
             <article
               key={post.title}
-              className="bg-black p-8 rounded-2xl min-w-52"
+              className="bg-stone-900 p-8 rounded-2xl min-w-52"
             >
               <p>{post.title}</p>
               <p>{post.description}</p>
