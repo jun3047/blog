@@ -7,16 +7,18 @@ const page = async () => {
   const posts = await getPosts();
 
   return (
-    <div className="flex flex-col m-10">
+    <div className="flex flex-col m-20 gap-4 md:m-10">
       <Nav />
       {posts.map(post => (
-        <Link
-          className="p-4 border-gray"
-          href={`post/${post.slug}`}
-          key={post.title}
+        <div
+          key={post.slug}
+          className="border-gray px-4 py-6 bg-neutral-900 rounded-2xl"
         >
-          {post.title}
-        </Link>
+          <Link href={`post/${post.slug}`} key={post.slug}>
+            {post.title}
+          </Link>
+          <p>{post.description}</p>
+        </div>
       ))}
     </div>
   );

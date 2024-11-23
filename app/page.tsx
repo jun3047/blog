@@ -1,7 +1,9 @@
 import { Metadata } from "next";
+import Link from "next/link";
 
 import Nav from "@/components/Nav";
 import { getPosts } from "@/lib/api";
+
 export default async function Home() {
   const posts = await getPosts();
 
@@ -9,7 +11,7 @@ export default async function Home() {
     <div className="my-10 flex flex-col">
       <Nav />
       <main className="my-10 mx-20">
-        <h1 className="text-6xl mb-5">정준 | JUN</h1>
+        <h1 className="text-6xl mb-5">정준</h1>
         <strong className="text-xl">Frontend Developer</strong>
         <p className="font-light text-xl py-4 leading-8">
           우리는 효율적으로 학습하고 있을까요? 정말 최선일까요? <br />
@@ -21,10 +23,14 @@ export default async function Home() {
         <div className="flex gap-6 py-5 px-20 overflow-x-scroll scrollbar-hide">
           {posts.map(post => (
             <article
-              key={post.title}
-              className="bg-stone-900 p-8 rounded-2xl min-w-52"
+              key={post.slug}
+              className="bg-zinc-900 p-8 rounded-2xl min-w-52"
             >
-              <p>{post.title}</p>
+              <Link href={`/post/${post.slug}`}>
+                <p className="underline truncate">
+                  <strong>{post.title}</strong>
+                </p>
+              </Link>
               <p>{post.description}</p>
             </article>
           ))}
