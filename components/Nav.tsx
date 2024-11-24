@@ -17,7 +17,7 @@ const Nav = () => {
 
   return (
     <nav className="fixed left-1/2 transform -translate-x-1/2 bottom-6">
-      <ul className="mx-20 flex gap-4 bg-[var(--background)] rounded-2xl px-6 m-auto shadow-neutral-900 shadow-md">
+      <ul className="border-white border border-opacity-10 mx-20 flex gap-4 bg-[var(--background)] rounded-2xl px-6 m-auto shadow-neutral-900 shadow-[black_0px_0px_10px_4px]">
         {MEUNS.map(({ title, url }) => (
           <li className="py-2 flex items-center" key={title}>
             <Link
