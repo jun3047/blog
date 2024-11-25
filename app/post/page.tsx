@@ -18,7 +18,7 @@ const page = async () => {
               key={post.slug}
               className="border-gray px-4 py-6 bg-neutral-900 rounded-2xl w-[calc(100%/3-15px)] md:w-[calc(100%/4-20px)]"
             >
-              <Link href={`post/${post.slug}`} key={post.slug}>
+              <Link href={`post/md/${post.slug}`} key={post.slug}>
                 <p className="underline truncate">
                   <strong>{post.title}</strong>
                 </p>

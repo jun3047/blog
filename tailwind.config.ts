@@ -7,6 +7,15 @@ export default {
   ],
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            hr: { borderColor: "#fafafa" }, // zinc-50
+            "ul > li::marker": { color: "#fafafa" }, // zinc-50
+            pre: { backgroundColor: "#18181b" }, // zinc-900
+          },
+        },
+      },
       fontFamily: {
         suite: ["var(--font-suite)"],
       },
@@ -16,5 +25,8 @@ export default {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [
+    require("tailwind-scrollbar-hide"),
+    require("@tailwindcss/typography"),
+  ],
 } satisfies Config;
