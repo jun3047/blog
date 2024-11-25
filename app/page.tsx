@@ -28,7 +28,7 @@ export default async function Home() {
               key={post.slug}
               className="bg-neutral-900 p-8 rounded-2xl min-w-52"
             >
-              <Link href={`/post/${post.slug}`}>
+              <Link href={`/post/md/${post.slug}`}>
                 <p className="underline truncate">
                   <strong>{post.title}</strong>
                 </p>
