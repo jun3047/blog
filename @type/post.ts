@@ -4,7 +4,7 @@ export type Post = {
   description: string;
   date: string; //ISO
   image: string;
-  tags: Tag[];
+  tag: Tag;
 };
 
-export type Tag = "CS";
+export type Tag = "CS" | "STARTUP" | "DESIGN";
