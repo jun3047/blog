@@ -41,7 +41,8 @@ export default async function Home() {
         <strong className="text-xl">Frontend Developer</strong>
         <p className="font-light text-xl py-4 leading-8">
           프론트엔드 개발을 합니다. <br />
-          사업과 디자인을 좋아합니다.
+          사업과 디자인을 좋아합니다. <br />
+          사람에 대해 궁금증이 많습니다.
         </p>
       </main>
       {Object.entries(postsByTag).map(([tag, posts]) =>
