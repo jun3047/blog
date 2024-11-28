@@ -15,9 +15,8 @@ export default async function Home() {
         <h1 className="text-6xl mb-5">정준</h1>
         <strong className="text-xl">Frontend Developer</strong>
         <p className="font-light text-xl py-4 leading-8">
-          우리는 효율적으로 학습하고 있을까요? 정말 최선일까요? <br />
-          인터랙티브하고, 인간적이고, 효율적인 학습 서비스를 만들고 있습니다.
-          <br /> 학습의 효율을 늘리려 빠른 성장을 하는 것에 집중하고 있습니다.
+          프론트엔드 개발을 합니다. <br />
+          사업과 디자인을 좋아합니다.
         </p>
       </main>
       <section className="flex flex-col my-8">
