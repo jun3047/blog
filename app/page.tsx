@@ -13,8 +13,12 @@ export default async function Home() {
 
   const renderSection = (tag: Tag, _posts: Post[]) => (
     <section className="flex flex-col my-8">
-      <h3 className="text-2xl font-medium mx-10 md:mx-20">{tag} 기록</h3>
-      <div className="flex gap-6 py-5 px-10 md:px-20 overflow-x-scroll scrollbar-hide">
+      <h3 className={`text-2xl font-medium mx-10 md:mx-20 m-transition`}>
+        {tag} 기록
+      </h3>
+      <div
+        className={`flex gap-6 py-5 px-10 md:px-20 overflow-x-scroll scrollbar-hide m-transition`}
+      >
         {_posts.map(post => (
           <article
             key={post.slug}
@@ -36,7 +40,7 @@ export default async function Home() {
   return (
     <div className="my-10 flex flex-col">
       <Nav />
-      <main className="mx-10 my-10 md:mx-20">
+      <main className={`mx-10 my-10 md:mx-20 m-transition`}>
         <h1 className="text-6xl mb-5">정준</h1>
         <strong className="text-xl">Frontend Developer</strong>
         <p className="font-light text-xl py-4 leading-8">
