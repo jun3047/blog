@@ -20,7 +20,9 @@
     "prism-react-renderer": "^2.4.0",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "react-live": "^4.1.8"
+    "react-live": "^4.1.8",
+    "remark-gfm": "^4.0.0",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",

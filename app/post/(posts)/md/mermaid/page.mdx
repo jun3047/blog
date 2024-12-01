@@ -14,6 +14,9 @@ export const metadata = {
 ---
 ## merimaid
 
+
+### HTTP 요청-응답 흐름
+
 <Mermaid chart={`
   sequenceDiagram
     participant Browser as 브라우저
@@ -35,3 +38,70 @@ export const metadata = {
     Browser->>ServiceWorker: 캐싱된 데이터 요청
     ServiceWorker-->>Browser: 캐싱된 데이터 응답
 `}/>
+
+### HTTP 메시지 구조
+
+|메시지 유형|구성 요소|설명|
+|---|---|---|
+|HTTP 요청 메시지|Start Line|요청 메서드와 경로 (예: `GET /index.html HTTP/1.1`)|
+||Headers|추가적인 메타데이터 (예: `Content-Type`, `Authorization`)|
+||Body|선택적 데이터 (POST, PUT 요청 시 사용)|
+|HTTP 응답 메시지|Start Line|상태 코드와 설명 (예: `HTTP/1.1 200 OK`)|
+||Headers|추가적인 메타데이터 (예: `Content-Type`, `Cache-Control`)|
+||Body|리소스 데이터 (HTML, CSS, JS 등)|
+
+### HTTP 상태 코드
+
+| 상태 코드 범위 | 범주            | 예시 코드            | 설명                     |
+|---------------|----------------|--------------------|-------------------------|
+| 1xx           | 정보 제공       | 100 Continue       | 요청 처리 중 정보 전달     |
+| 2xx           | 성공           | 200 OK, 201 Created| 요청 성공 및 자원 생성    |
+| 3xx           | 리다이렉션      | 301 Moved Permanently, 302 Found | 리소스가 이동되었거나 임시 리다이렉션 |
+| 4xx           | 클라이언트 오류 | 400 Bad Request, 404 Not Found | 요청이 잘못되었거나 리소스를 찾을 수 없음 |
+| 5xx           | 서버 오류       | 500 Internal Server Error, 503 Service Unavailable | 서버에서 오류가 발생하거나 사용 불가 |
+
+### HTTP 캐싱 과정
+
+<Mermaid chart={`
+  sequenceDiagram
+      participant Browser as 브라우저
+      participant Cache as 캐시
+      participant Server as 서버
+
+      Browser->>Cache: 리소스 요청
+      alt 캐시된 리소스가 있는 경우
+          Cache-->>Browser: 캐싱된 데이터 반환
+      else 캐시된 리소스가 없는 경우
+          Cache->>Server: 네트워크 요청
+          Server-->>Cache: 리소스 저장 (ETag/Last-Modified 포함)
+          Cache-->>Browser: 네트워크 데이터 전달
+      end
+`}/>
+
+### HTTP 조건부 요청
+
+<Mermaid chart={`
+  sequenceDiagram
+    participant Browser as 브라우저
+    participant Server as 서버
+
+    Browser->>Server: 요청 (GET /index.html)
+    Server-->>Browser: 응답 (200 OK, ETag 포함)
+
+    Browser->>Server: 조건부 요청 (If-None-Match: "abc123")
+    alt 리소스 변경되지 않은 경우
+        Server-->>Browser: 304 Not Modified
+    else 리소스 변경된 경우
+        Server-->>Browser: 200 OK (새로운 데이터 반환)
+    end
+`}/>
+
+### HTTP 프로토콜의 진화
+
+| 버전     | 주요 특징                                     |
+|----------|----------------------------------------------|
+| HTTP/0.9 | 텍스트 기반 단순 요청/응답                    |
+| HTTP/1.0 | 기본적인 요청/응답 체계와 상태 코드 도입         |
+| HTTP/1.1 | Keep-Alive, Host 헤더 지원                   |
+| HTTP/2   | 멀티플렉싱, 헤더 압축, 성능 개선               |
+| HTTP/3   | QUIC 기반, UDP 사용으로 지연 시간 단축          |

@@ -1,10 +1,11 @@
 "use client";
 
 import mermaid from "mermaid";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 mermaid.initialize({
-  startOnLoad: true,
+  startOnLoad: false,
 });
 
 type MermaidProps = {
@@ -12,9 +13,26 @@ type MermaidProps = {
 };
 
 const Mermaid = ({ chart }: MermaidProps): JSX.Element => {
-  useEffect(() => mermaid.contentLoaded(), []);
+  const chartRef = useRef<HTMLDivElement | null>(null);
+  const uniqueId = `mermaid-${uuidv4()}`;
 
-  return <div className="mermaid">{chart}</div>;
+  useEffect(() => {
+    const renderMermaidChart = async () => {
+      if (chartRef.current) {
+        try {
+          const { svg } = await mermaid.render(uniqueId, chart);
+          chartRef.current.innerHTML = svg;
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.error("Mermaid rendering failed:", error);
+        }
+      }
+    };
+
+    renderMermaidChart();
+  }, [chart, uniqueId]);
+
+  return <div ref={chartRef} className="mermaid" />;
 };
 
 export default Mermaid;
