@@ -1,9 +1,8 @@
-import { format } from "date-fns";
 import { Metadata } from "next";
-import Link from "next/link";
 
 import { Post, Tag } from "@/@type/post";
 import Nav from "@/components/Nav";
+import PostCard from "@/components/post/PostCard";
 import { getPosts } from "@/lib/api";
 import { groupPostsByTag } from "@/lib/utils/post";
 
@@ -20,18 +19,7 @@ export default async function Home() {
         className={`flex gap-6 py-5 px-10 md:px-20 overflow-x-scroll scrollbar-hide m-transition`}
       >
         {_posts.map(post => (
-          <article
-            key={post.slug}
-            className="bg-neutral-900 p-8 rounded-2xl min-w-52"
-          >
-            <Link href={`/post/md/${post.slug}`}>
-              <p className="underline truncate">
-                <strong>{post.title}</strong>
-              </p>
-            </Link>
-            <p>{post.description}</p>
-            <p>{format(post.date, "yy. MM. dd.")}</p>
-          </article>
+          <PostCard key={post.slug} post={post} className="min-w-56 w-56" />
         ))}
       </div>
     </section>
