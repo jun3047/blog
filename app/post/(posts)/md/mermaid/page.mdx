@@ -1,0 +1,37 @@
+import Mermaid from "@/components/diagram/Mermaid";
+
+export const metadata = {
+  title: "플로우 차트를 넣고 싶어~~",
+  description: "플로우 차트 merimaid merimaidmerimaidmerimaidmerimaidmerimaidmerimaid",
+  date: "2024-01-01T00:00:00Z",
+  image:
+    "https://storage.googleapis.com/leehyeonjun.com/Next_mdx%EB%A1%9C_%EB%B8%94%EB%A1%9C%EA%B7%B8_%EB%A7%8C%EB%93%A4%EA%B8%B0/next%2Bmdx.png",
+  tags: [],
+};
+
+## Merimaid
+
+---
+## merimaid
+
+<Mermaid chart={`
+  sequenceDiagram
+    participant Browser as 브라우저
+    participant Server as 서버
+    participant ServiceWorker as 서비스 워커 (옵션)
+
+    Browser->>Server: HTTP 요청 (GET, POST 등)
+    alt 요청이 성공한 경우
+        Server-->>Browser: HTTP 응답 (200 OK)
+    else 리다이렉트가 필요한 경우
+        Server-->>Browser: 3xx 상태 코드 및 Location 헤더
+        Browser->>Server: 새 URL로 요청
+        Server-->>Browser: HTTP 응답 (200 OK)
+    else 요청이 실패한 경우
+        Server-->>Browser: 4xx/5xx 상태 코드
+    end
+
+    Note over Browser, ServiceWorker: 서비스 워커가 요청을 가로채거나<br>캐싱된 데이터를 반환할 수 있음
+    Browser->>ServiceWorker: 캐싱된 데이터 요청
+    ServiceWorker-->>Browser: 캐싱된 데이터 응답
+`}/>

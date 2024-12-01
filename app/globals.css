@@ -24,3 +24,7 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
+
+.mermaid {
+  @apply bg-zinc-300 rounded-md py-4;
+}
