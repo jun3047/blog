@@ -1,7 +1,7 @@
 import { readdir } from "fs/promises";
 import path from "path";
 
-import { Post } from "@/@type/post";
+import { Post } from "@/lib/type/post";
 
 export async function getPosts(): Promise<Post[]> {
   const postPath = path.resolve(process.cwd(), "app", "post", "(posts)", "md");

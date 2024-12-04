@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 
-import { Post, Tag } from "@/@type/post";
 import Nav from "@/components/Nav";
 import PostCard from "@/components/post/PostCard";
 import { getPosts } from "@/lib/api";
+import { Post, Tag } from "@/lib/type/post";
 import { groupPostsByTag } from "@/lib/utils/post";
 
 export default async function Home() {

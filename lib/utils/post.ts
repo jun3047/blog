@@ -1,4 +1,4 @@
-import { Post, Tag } from "@/@type/post";
+import { Post, Tag } from "@/lib/type/post";
 
 const etcTag = "작성 중인";
 
