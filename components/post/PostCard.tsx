@@ -15,11 +15,11 @@ const PostCard = ({ post, className, ...props }: PostCardProps) => {
       {...props}
     >
       <Link href={`/post/md/${post.slug}`}>
-        <h2 className="underline truncate text-lg">
+        <h2 className="underline text-lg line-clamp-1">
           <strong>{post.title}</strong>
         </h2>
       </Link>
-      <p>{post.description}</p>
+      <p className="line-clamp-2 break-words">{post.description}</p>
       <p>{format(post.date, "yy. MM. dd.")}</p>
       <ul className="flex gap-4 flex-wrap mt-2">
         {post.tags.map(tag => (
