@@ -10,7 +10,7 @@ export async function getPosts(): Promise<Post[]> {
     dirent => dirent.isDirectory()
   );
 
-  const posts = await Promise.all(
+  const posts: Post[] = await Promise.all(
     slugs.map(async ({ name }) => {
       const { metadata } = await import(
         `../app/post/(posts)/md/${name}/page.mdx`
@@ -19,7 +19,7 @@ export async function getPosts(): Promise<Post[]> {
     })
   );
 
-  posts.sort((a, b) => +new Date(b.publishDate) - +new Date(a.publishDate));
+  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return posts;
 }

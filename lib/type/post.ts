@@ -4,7 +4,8 @@ export type Tag =
   | "인터렉션"
   | "사업"
   | "사람"
-  | "학습";
+  | "학습"
+  | "뇌과학";
 
 export type Post = {
   slug: string;
