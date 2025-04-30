@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const Rallit_RESUME =
-  "https://www.rallit.com/hub/resumes/578089/%EC%A0%95%EC%A4%80";
+// const Rallit_RESUME =
+//   "https://www.rallit.com/hub/resumes/578089/%EC%A0%95%EC%A4%80";
 
 const MEUNS = [
   { title: "Home", url: "/" },
   { title: "Post", url: "/post" },
-  { title: "Resume", url: Rallit_RESUME },
+  // { title: "Resume", url: Rallit_RESUME },
 ];
 
 const Nav = () => {
